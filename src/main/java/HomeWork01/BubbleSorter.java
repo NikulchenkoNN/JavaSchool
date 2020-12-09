@@ -1,6 +1,5 @@
-package HomeWork01.BubbleSorter;
+package HomeWork01;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class BubbleSorter {
