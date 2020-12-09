@@ -1,4 +1,4 @@
-package HomeWork01;
+package HomeWork01.BubbleSorter;
 
 import java.util.ArrayList;
 import java.util.List;
