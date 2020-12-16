@@ -17,13 +17,8 @@ public class Car {
         return model;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    @Override
+    public String toString() {
+        return model;
     }
-
-    public void setModel(String model) {
-        this.model = model;
-    }
-
-
 }
