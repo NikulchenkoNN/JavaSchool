@@ -8,4 +8,12 @@ public class Word implements Comparable{
     public int compareTo(Object o) {
         return 0;
     }
+<<<<<<< Updated upstream
+=======
+
+    @Override
+    public String toString() {
+        return word;
+    }
+>>>>>>> Stashed changes
 }
