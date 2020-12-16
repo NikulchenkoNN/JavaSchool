@@ -10,6 +10,7 @@ public class Task06Main {
         System.out.println("Введите местоположение файла");
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         List<String> list = StringNumberFinder.init(bufferedReader.readLine());
+        bufferedReader.close();
         System.out.println("Введите номер строки");
         int n = Integer.parseInt(bufferedReader.readLine());
         System.out.println(StringNumberFinder.numberFinder(list, n));

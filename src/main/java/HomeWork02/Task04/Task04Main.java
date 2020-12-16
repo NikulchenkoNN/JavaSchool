@@ -10,6 +10,7 @@ public class Task04Main {
         System.out.println("Введите местоположение файла");
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         List<String> list = ListReverser.reverseList(bufferedReader.readLine());
+        bufferedReader.close();
         for(String s : list) {
             System.out.println(s);
         }

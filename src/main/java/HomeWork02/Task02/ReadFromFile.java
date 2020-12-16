@@ -16,6 +16,7 @@ public class ReadFromFile {
                 words.add(new Word(str));
             }
         }
+        bufferedReader.close();
         return words;
     }
 }

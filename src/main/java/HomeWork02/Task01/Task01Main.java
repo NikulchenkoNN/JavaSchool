@@ -10,6 +10,7 @@ public class Task01Main {
         System.out.println("Введите местоположение файла");
         BufferedReader nameReader = new BufferedReader(new InputStreamReader(System.in));
         Set<String> words =  UniqueWordsCounter.reader(nameReader.readLine());
+        nameReader.close();
         System.out.println(words.size());
         System.out.println(words);
 

@@ -14,6 +14,7 @@ public class Task03Main {
         System.out.println("Введите местоположение файла");
         BufferedReader nameReader = new BufferedReader(new InputStreamReader(System.in));
         List<String> words =  WordsCounter.counter(nameReader.readLine());
+        nameReader.close();
         Map<String, Integer> map = new HashMap();
         for (String w : words) {
             map.put(w, Collections.frequency(words, w));

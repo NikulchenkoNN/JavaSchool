@@ -19,6 +19,7 @@ public class WordsCounter {
                 }
             }
         }
+        bufferedReader.close();
         return words;
     }
 }
