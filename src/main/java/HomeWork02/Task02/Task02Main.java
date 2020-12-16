@@ -7,17 +7,12 @@ import java.util.List;
 public class Task02Main {
     public static void main(String[] args) {
         List<Word> words = new ArrayList<>();
-        words.add(new Word("mama"));
-        words.add(new Word("mila"));
-        words.add(new Word("milom"));
-        words.add(new Word("ramu"));
-        words.add(new Word("mil"));
-        words.add(new Word("milloin"));
-
+        words.add(new Word("privet"));
+        words.add(new Word("priv"));
+        words.add(new Word("allo"));
+        words.add(new Word("ale"));
         System.out.println(words);
-        System.out.println();
         Collections.sort(words);
         System.out.println(words);
     }
-    
 }
