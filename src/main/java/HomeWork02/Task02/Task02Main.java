@@ -1,5 +1,6 @@
 package HomeWork02.Task02;
 
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -19,5 +20,7 @@ public class Task02Main {
         Collections.sort(words);
         System.out.println(words);
     }
+
+
     
 }
