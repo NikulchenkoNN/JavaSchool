@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class StringReader {
+public class ListReverser {
     protected static List<String> reverseList(String fileName) throws IOException {
         List<String> list = new ArrayList<>();
         BufferedReader bufferedReader = new BufferedReader(new FileReader(fileName));
