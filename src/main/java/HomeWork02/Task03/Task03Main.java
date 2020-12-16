@@ -1,6 +1,5 @@
 package HomeWork02.Task03;
 
-import HomeWork02.Task01.UniqueWordsCounter;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -12,6 +11,7 @@ import java.util.Map;
 
 public class Task03Main {
     public static void main(String[] args) throws IOException {
+        System.out.println("Введите местоположение файла");
         BufferedReader nameReader = new BufferedReader(new InputStreamReader(System.in));
         List<String> words =  WordsCounter.counter(nameReader.readLine());
         Map<String, Integer> map = new HashMap();

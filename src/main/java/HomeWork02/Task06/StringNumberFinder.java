@@ -17,6 +17,6 @@ public class StringNumberFinder {
         return list;
     }
     protected static String numberFinder(List<String> list, int n) {
-        return list.get(n);
+        return list.get(n-1);
     }
 }

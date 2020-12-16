@@ -12,7 +12,7 @@ public class WordsCounter {
         List<String> words = new ArrayList<>();
         BufferedReader bufferedReader = new BufferedReader(new FileReader(fileName));
         while (bufferedReader.ready()) {
-            String[] line = bufferedReader.readLine().toLowerCase(Locale.ROOT).replaceAll(".^[\\D]", " ").split(" ");
+            String[] line = bufferedReader.readLine().toLowerCase(Locale.ROOT).replaceAll("\\d", " ").replaceAll("\\t", " ").split(" ");
             for (String word : line) {
                 if (!(word.equals(""))) {
                     words.add(word);
