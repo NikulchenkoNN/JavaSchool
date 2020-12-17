@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ReadFromFile {
+    protected static List<Word> readFromFile(String fileName) throws IOException {
     protected static List<Word> reader(String fileName) throws IOException {
         List<Word> words = new ArrayList<>();
         BufferedReader bufferedReader = new BufferedReader(new FileReader(fileName));
