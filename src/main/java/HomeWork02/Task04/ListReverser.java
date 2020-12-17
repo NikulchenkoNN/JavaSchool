@@ -15,6 +15,7 @@ public class ListReverser {
         while (bufferedReader.ready()) {
             list.add(bufferedReader.readLine());
         }
+        bufferedReader.close();
         Collections.reverse(list);
         return list;
     }

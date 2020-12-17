@@ -14,6 +14,7 @@ public class StringNumberFinder {
         while (fileReader.ready()) {
             list.add(fileReader.readLine());
         }
+        fileReader.close();
         return list;
     }
     protected static String numberFinder(List<String> list, int n) {
