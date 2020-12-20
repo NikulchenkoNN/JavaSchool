@@ -11,7 +11,6 @@ public class Task02Main {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         List<Word> words = ReadFromFile.readFromFile(bufferedReader.readLine());
-        List<Word> words = ReadFromFile.reader(bufferedReader.readLine());
         bufferedReader.close();
         System.out.println(words);
         Collections.sort(words);
