@@ -1,6 +1,7 @@
 package HomeWork03;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -46,26 +47,26 @@ public class CollectionUtils {
         return true;
     }
 
-    public static <T> List<? super T> range(List<? extends T> list, T min, T max) {
-        List<? super T> result = new ArrayList<>();
-        int start = list.indexOf(min);
-        int end = list.indexOf(max);
-        while (start <= end) {
-            result.add(list.get(start));
-            start++;
+    public static <T extends Comparable<? super T>> List<T> range(List<? extends T> list, T min, T max) {
+        Collections.sort(list);
+        List<T> result = new ArrayList<>();
+        for (T t :
+                list) {
+            if (t.compareTo(min) >= 0 && t.compareTo(max) <= 0) {
+                result.add(t);
+            }
         }
         return result;
     }
 
-    public static <T> List<? super T> range(List<? extends T> list, T min, T max, Comparator comparator) {
-        List<? super T> result = new ArrayList<>();
-        int start = list.indexOf(min);
-        int end = list.indexOf(max);
-        while (start <= end) {
-            result.add(list.get(start));
-            start++;
+    public static <T extends Comparable<? super T>> List<T> range(List<? extends T> list, T min, T max, Comparator comparator) {
+        List<T> result = new ArrayList<>();
+        for (T t :
+                list) {
+            if (comparator.compare(t, min) >= 0 && comparator.compare(t, max) <= 0) {
+                result.add(t);
+            }
         }
-        result.sort(comparator);
         return result;
     }
 }
