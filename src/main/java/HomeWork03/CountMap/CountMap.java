@@ -1,4 +1,6 @@
-package HomeWork03;
+package HomeWork03.CountMap;
+
+import HomeWork03.CountMapImpl;
 
 import java.util.Map;
 

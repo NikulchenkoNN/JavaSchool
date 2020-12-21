@@ -1,4 +1,4 @@
-package HomeWork03;
+package HomeWork03.CountMap;
 
 import java.util.ArrayList;
 import java.util.Comparator;
