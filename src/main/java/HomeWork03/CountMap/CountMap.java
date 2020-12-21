@@ -1,7 +1,5 @@
 package HomeWork03.CountMap;
 
-import HomeWork03.CountMapImpl;
-
 import java.util.Map;
 
 public interface  CountMap<T> {
