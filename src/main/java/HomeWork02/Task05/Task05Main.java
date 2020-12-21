@@ -4,15 +4,13 @@ package HomeWork02.Task05;
 import java.util.*;
 
 public class Task05Main<T> implements Iterator {
-    public LinkedList linkedList;
+    private static LinkedList<String> linkedList;
 
-    public void ReverseList(List<T> list) {
-        this.linkedList = ArrayFiller.init();
+    public static void ReverseList(List<String> list) {
+        linkedList = ArrayFiller.init();
+        LinkedList<String> linkedList1 = linkedList;
         System.out.println(linkedList);
-        for (T obj:
-             list) {
-            this.linkedList.push(obj);
-        }
+        System.out.println(linkedList1);
     }
 
     @Override
@@ -22,6 +20,11 @@ public class Task05Main<T> implements Iterator {
 
     @Override
     public Object next() {
-        return linkedList.peekLast();
+        return linkedList.pollLast();
+    }
+
+    public static void main(String[] args) {
+        List<String> list = null;
+        ReverseList(list);
     }
 }
