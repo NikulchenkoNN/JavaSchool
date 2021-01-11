@@ -29,11 +29,11 @@ public class TerminalServer {
     }
 
     public void withdrawal(int cash) throws NotEnoughMoneyException {
-        if (cash > balance) {
+        if (cash > getBalance()) {
             throw new NotEnoughMoneyException("На Вашем счёте не достаточно средств");
         } else {
             setBalance(getBalance() - cash);
-            System.out.println("Выдано "+cash + " денег");
+            System.out.println("Выдано " + cash + " денег");
         }
     }
 
