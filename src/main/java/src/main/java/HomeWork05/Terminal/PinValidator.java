@@ -1,5 +1,7 @@
 package HomeWork05.Terminal;
 
+import HomeWork05.Exceptions.AccountIsLockedException;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -13,17 +15,25 @@ public class PinValidator {
 
     public boolean chekPin() throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        while (numberOfAttempts < 3) {
-            while (pinCount < 4) {
+
+        while (pinCount < 4) {
+            if (numberOfAttempts == 3) {
+                try {
+                    throw new AccountIsLockedException("Аккаунт заблокирован на 10 секунд");
+                } catch (AccountIsLockedException e) {
+                }
+            } else {
                 try {
                     int pin = Integer.parseInt(bufferedReader.readLine());
                 } catch (NumberFormatException | IOException e) {
+                    numberOfAttempts++;
                     System.out.println("Введено не число");
                 }
                 pinCount++;
             }
-            numberOfAttempts++;
         }
+
+
         bufferedReader.close();
         return true;
     }
