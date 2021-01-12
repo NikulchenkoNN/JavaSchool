@@ -1,6 +1,7 @@
 package HomeWork05.Terminal;
 
 import HomeWork05.Exceptions.AccountIsLockedException;
+import HomeWork05.Exceptions.IncorrectPinException;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -9,33 +10,38 @@ import java.io.InputStreamReader;
 public class PinValidator {
     private int pinCount = 0;
     private int numberOfAttempts = 0;
+    private int[] pinArray = new int[4];
+    private int currentTime;
+    private int blockTime;
 
     public PinValidator() {
     }
 
-    public boolean chekPin() throws IOException {
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+    public boolean checkNum(Integer num) throws IncorrectPinException {
+        if (num instanceof Integer) {
+            return true;
+        } else {
+            throw new IncorrectPinException("Введено не число");
+        }
+    }
 
-        while (pinCount < 4) {
-            if (numberOfAttempts == 3) {
+    public void checkPin() throws IOException, AccountIsLockedException {
+        while (numberOfAttempts < 3) {
+            if (numberOfAttempts == 2) {
+                throw new AccountIsLockedException("Аккаунт заблокирован на 10 секунд");
+            }
+            while (pinCount < 4) {
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+                int pinPart = Integer.parseInt(bufferedReader.readLine());
                 try {
-                    throw new AccountIsLockedException("Аккаунт заблокирован на 10 секунд");
-                } catch (AccountIsLockedException e) {
-                }
-            } else {
-                try {
-                    int pin = Integer.parseInt(bufferedReader.readLine());
-                } catch (NumberFormatException | IOException e) {
+                    checkNum(pinPart);
+                } catch (IncorrectPinException incorrectPinException) {
                     numberOfAttempts++;
-                    System.out.println("Введено не число");
                 }
+                pinArray[pinCount] = pinPart;
                 pinCount++;
             }
         }
-
-
-        bufferedReader.close();
-        return true;
     }
 }
 
