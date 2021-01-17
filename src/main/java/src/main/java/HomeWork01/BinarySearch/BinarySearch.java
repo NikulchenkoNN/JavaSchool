@@ -8,7 +8,7 @@ public class BinarySearch {
         for (int i = 0; i < list.length; i++) {
             list[i] = i;
         }
-        System.out.println(binarySearch(list, 10));
+        System.out.println(binarySearch(list, 7));
     }
 
     public static boolean binarySearch(int[] list, int n) {
