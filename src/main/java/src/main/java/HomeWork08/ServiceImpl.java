@@ -2,7 +2,7 @@ package HomeWork08;
 
 import java.io.*;
 
-public class ServiceImpl implements Service, Externalizable {
+public class ServiceImpl implements Service, Serializable {
     public static final long serialVersionUID = 1L;
     private String work;
     private int num;
@@ -16,9 +16,9 @@ public class ServiceImpl implements Service, Externalizable {
     }
 
     @Override
-    public int doHardWork1(String work, int num) {
+    public int doHardWork(String work, int num) {
         try {
-            Thread.sleep(5000);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -28,21 +28,10 @@ public class ServiceImpl implements Service, Externalizable {
     @Override
     public int doHardWork2(String work, int num) {
         try {
-            Thread.sleep(5000);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        return num + 3;
+        return num + 5;
     }
-
-    @Override
-    public void writeExternal(ObjectOutput out) throws IOException {
-
-    }
-
-    @Override
-    public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
-
-    }
-
 }

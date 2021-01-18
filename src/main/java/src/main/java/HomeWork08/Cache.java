@@ -7,5 +7,7 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
-public @interface CachedFile {
+public @interface Cache {
+    String fileName() default "result";
+    Sources source() default Sources.MAP;
 }
