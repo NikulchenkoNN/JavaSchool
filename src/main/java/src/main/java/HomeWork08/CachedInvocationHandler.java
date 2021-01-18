@@ -1,6 +1,9 @@
 package HomeWork08;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileReader;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
@@ -23,15 +26,26 @@ public class CachedInvocationHandler implements InvocationHandler {
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        if (!method.isAnnotationPresent(Cache.class)) {
+        if (!method.isAnnotationPresent(CachedMap.class) || !method.isAnnotationPresent(CachedFile.class)) {
             return method.invoke(delegate, args);
         }
-        if (!result.containsKey(key(method,args))) {
-            System.out.println("Delegation of " + method.getName());
-            Object invoke = method.invoke(delegate, args);
-            result.put(key(method, args), invoke);
-        } else {
-            System.out.println("Get data from cache");
+        if (method.isAnnotationPresent(CachedMap.class)) {
+            if (!result.containsKey(key(method, args))) {
+                System.out.println("Delegation of " + method.getName());
+                Object invoke = method.invoke(delegate, args);
+                result.put(key(method, args), invoke);
+            } else {
+                System.out.println("Get data from MAP-cache");
+            }
+        } else if (method.isAnnotationPresent(CachedFile.class)) {
+            FileReader fr = new FileReader(file);
+            BufferedReader br = new BufferedReader(fr);
+            String line = br.readLine();
+            while (line != null) {
+                String[] str = line.split(" ");
+
+
+            }
         }
         return result.get(key(method, args));
     }

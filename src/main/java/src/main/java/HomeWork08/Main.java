@@ -12,8 +12,12 @@ public class Main {
     }
 
     static void run(Service service) {
-        System.out.println(service.doHardWork("work1", 10)); //считает результат
-        System.out.println(service.doHardWork("work2", 5)); //считает результат
-        System.out.println(service.doHardWork("work1", 10)); //результат из кеша
+        System.out.println(service.doHardWork1("work1", 10)); //считает результат
+        System.out.println(service.doHardWork1("work2", 5)); //считает результат
+        System.out.println(service.doHardWork1("work1", 10)); //результат из кеша
+
+        System.out.println(service.doHardWork2("work1", 10)); //считает результат
+        System.out.println(service.doHardWork2("work2", 5)); //считает результат
+        System.out.println(service.doHardWork2("work1", 10)); //результат из кеша
     }
 }

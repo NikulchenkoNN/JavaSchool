@@ -1,6 +1,9 @@
 package HomeWork08;
 
 public interface Service {
-    @Cache
-    int doHardWork(String work, int num);
+    @CachedMap
+    int doHardWork1(String work, int num);
+
+    @CachedFile
+    int doHardWork2(String work, int num);
 }
