@@ -1,4 +1,4 @@
-package HomeWork07;
+package HomeWork07.MyClassLoader;
 
 
 import java.io.File;
@@ -20,17 +20,11 @@ public class PluginManager {
                 Class<?> clazz = ClassLoader.getSystemClassLoader().loadClass(pluginClassName);
                 Constructor<? extends Plugin> constructor = (Constructor<? extends Plugin>) clazz.getConstructor();
                 Plugin plugin = constructor.newInstance();
-                System.out.println(plugin.getClass().getName());
                 plugin.doUseful();
                 return plugin;
             }
         }
-
         return null;
     }
 
-    public static void main(String[] args) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
-        PluginManager pluginManager = new PluginManager("D:\\Projects Java School\\src\\main\\java\\src\\main\\java\\HomeWork07");
-        pluginManager.load("PluginImpl", "HomeWork07");
-    }
 }

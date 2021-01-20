@@ -1,4 +1,4 @@
-package HomeWork07;
+package HomeWork07.MyClassLoader;
 
 public interface Plugin {
     void doUseful();
