@@ -1,4 +1,4 @@
-package HomeWork10;
+package HomeWork10.Part1;
 
 import java.math.BigInteger;
 import java.util.Date;
@@ -11,21 +11,23 @@ public class ThreadClass implements Runnable {
     }
 
     public BigInteger getFactorial(Integer num) {
-        Date start = new Date();
+        long start = System.nanoTime();
         BigInteger result = BigInteger.ONE;
         for (int i = 1; i <= num; i++) {
             result = result.multiply(BigInteger.valueOf(i));
         }
-        Date end = new Date();
-        long time = end.getTime() - start.getTime();
-
-        System.out.println("Time required " + time + " ms");
+        long time = System.nanoTime() - start;
+            System.out.printf("Time required %d ms\n", time / 1000);
         return result;
     }
 
     @Override
-    public void run() {
+    public synchronized void run() {
         BigInteger result = getFactorial(num);
-        System.out.println("Factorial of " + num + " is " + result);
+
+            System.out.printf("Factorial of %d is %d\n", num, result);
+            System.out.println("Thread name " + Thread.currentThread().getName());
+            System.out.println();
+
     }
 }

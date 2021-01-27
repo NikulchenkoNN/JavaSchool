@@ -1,4 +1,4 @@
-package HomeWork10;
+package HomeWork10.Part1;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
