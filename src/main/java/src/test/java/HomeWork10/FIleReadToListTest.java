@@ -26,18 +26,18 @@ public class FIleReadToListTest {
 
     @Test
     public synchronized void tester2() throws InterruptedException {
-        MyThreadPoolImplScalable threadPoolExtendable = new MyThreadPoolImplScalable(2, 4);
+        MyThreadPoolImplScalable threadPoolExtendable = new MyThreadPoolImplScalable(3, 4);
         threadPoolExtendable.start();
 
 //        threadPoolExtendable.shutdown();
         threadPoolExtendable.execute(new ThreadClass(1));
         threadPoolExtendable.execute(new ThreadClass(8));
         threadPoolExtendable.execute(new ThreadClass(75));
-        threadPoolExtendable.execute(new ThreadClass(10));
-        threadPoolExtendable.execute(new ThreadClass(75));
-        threadPoolExtendable.execute(new ThreadClass(75));
-        threadPoolExtendable.execute(new ThreadClass(75));
-        threadPoolExtendable.execute(new ThreadClass(75));
+//        threadPoolExtendable.execute(new ThreadClass(10));
+//        threadPoolExtendable.execute(new ThreadClass(75));
+//        threadPoolExtendable.execute(new ThreadClass(75));
+//        threadPoolExtendable.execute(new ThreadClass(75));
+//        threadPoolExtendable.execute(new ThreadClass(75));
         Thread.sleep(10000);
 
 

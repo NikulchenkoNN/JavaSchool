@@ -38,6 +38,9 @@ public class MyThreadPoolImplScalable implements MyThreadPool {
                 if (taskQueue.size() > threadList.size() && threadList.size() < max) {
                     addThread();
                 }
+                if (taskQueue.size() < threadList.size() && threadList.size() > min) {
+                    removeThread();
+                }
             }
         }
     }
@@ -70,5 +73,9 @@ public class MyThreadPoolImplScalable implements MyThreadPool {
         ThreadClass thread = new ThreadClass();
         threadList.add(thread);
         thread.start();
+    }
+
+    public void removeThread() {
+        threadList.remove(threadList.size() - 1);
     }
 }
