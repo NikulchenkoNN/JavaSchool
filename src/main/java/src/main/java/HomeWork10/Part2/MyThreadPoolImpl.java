@@ -46,7 +46,6 @@ public class MyThreadPoolImpl implements MyThreadPool {
 
     public void shutdown() {
         isRun = false;
+        System.out.println("shutting down");
     }
-
-
 }

@@ -18,10 +18,6 @@ public class TerminalServer {
         this.balance = balance;
     }
 
-    public int checkBalance() {
-        return getBalance();
-    }
-
     public void checkSumm(int summ) throws NumberIsNotMultipleException {
         if (summ%100 != 0) {
             throw new NumberIsNotMultipleException("Введённое число не кратно 100");

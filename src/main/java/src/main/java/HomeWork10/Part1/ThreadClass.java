@@ -17,17 +17,21 @@ public class ThreadClass implements Runnable {
             result = result.multiply(BigInteger.valueOf(i));
         }
         long time = System.nanoTime() - start;
-            System.out.printf("Time required %d ms\n", time / 1000);
+//        System.out.printf("Time required %d ms\n", time / 1000);
         return result;
     }
 
     @Override
     public synchronized void run() {
         BigInteger result = getFactorial(num);
-
-            System.out.printf("Factorial of %d is %d\n", num, result);
-            System.out.println("Thread name " + Thread.currentThread().getName());
-            System.out.println();
+        System.out.printf("Factorial of %d is %d\n", num, result);
+        System.out.println("Thread name " + Thread.currentThread().getName());
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println();
 
     }
 }
