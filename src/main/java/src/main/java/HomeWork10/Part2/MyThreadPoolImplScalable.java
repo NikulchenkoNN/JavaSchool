@@ -76,6 +76,9 @@ public class MyThreadPoolImplScalable implements MyThreadPool {
     }
 
     public void removeThread() {
+        for (Thread thread : threadList) {
+            thread.getState();
+        }
         threadList.remove(threadList.size() - 1);
     }
 }

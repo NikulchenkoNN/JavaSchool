@@ -26,7 +26,7 @@ public class FIleReadToListTest {
 
     @Test
     public synchronized void tester2() throws InterruptedException {
-        MyThreadPoolImplScalable threadPoolExtendable = new MyThreadPoolImplScalable(3, 4);
+        MyThreadPoolImplScalable threadPoolExtendable = new MyThreadPoolImplScalable(5, 8);
         threadPoolExtendable.start();
 
 //        threadPoolExtendable.shutdown();

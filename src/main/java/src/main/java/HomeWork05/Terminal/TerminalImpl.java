@@ -22,8 +22,9 @@ public class TerminalImpl implements Terminal{
     @Override
     public void withdrawal(int cash) {
         try {
+            server.checkSumm(cash);
             server.withdrawal(cash);
-        } catch (NotEnoughMoneyException notEnoughMoneyException) {
+        } catch (NotEnoughMoneyException | NumberIsNotMultipleException notEnoughMoneyException) {
             notEnoughMoneyException.printStackTrace();
         }
     }
