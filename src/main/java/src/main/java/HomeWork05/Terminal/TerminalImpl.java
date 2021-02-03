@@ -1,31 +1,33 @@
 package HomeWork05.Terminal;
 
-import HomeWork05.Exceptions.IncorrectPinException;
+import HomeWork05.Exceptions.AccountIsLockedException;
 import HomeWork05.Exceptions.NotEnoughMoneyException;
 import HomeWork05.Exceptions.NumberIsNotMultipleException;
 
-import java.io.IOException;
-
-public class TerminalImpl implements Terminal{
+public class TerminalImpl implements Terminal {
     private TerminalServer server;
     private PinValidator pinValidator;
     private BankAccount account;
 
     @Override
-    public int checkBalance() {
-        if (account.isLocked()) {
-            System.out.printf("Аккаунт заблокирован еще %s секунд \n", (System.nanoTime() - account.getLockTIme())/1000);
+    public int balance() {
+        try {
+            account.checkLock();
+        } catch (AccountIsLockedException e) {
+            e.printStackTrace();
         }
         return server.getBalance();
     }
 
     @Override
     public void withdrawal(int cash) {
-        if (account.isLocked()) {
-            System.out.printf("Аккаунт заблокирован еще %s секунд \n", (System.nanoTime() - account.getLockTIme())/1000);
+        try {
+            account.checkLock();
+        } catch (AccountIsLockedException e) {
+            e.printStackTrace();
         }
         try {
-            server.checkSumm(cash);
+            server.checkSum(cash);
             server.withdrawal(cash);
         } catch (NotEnoughMoneyException | NumberIsNotMultipleException notEnoughMoneyException) {
             notEnoughMoneyException.printStackTrace();
@@ -34,11 +36,13 @@ public class TerminalImpl implements Terminal{
 
     @Override
     public void refill(int fee) {
-        if (account.isLocked()) {
-            System.out.printf("Аккаунт заблокирован еще %s секунд \n", (System.nanoTime() - account.getLockTIme())/1000);
+        try {
+            account.checkLock();
+        } catch (AccountIsLockedException e) {
+            e.printStackTrace();
         }
         try {
-            server.checkSumm(fee);
+            server.checkSum(fee);
         } catch (NumberIsNotMultipleException numberIsNotMultipleException) {
             numberIsNotMultipleException.printStackTrace();
         }

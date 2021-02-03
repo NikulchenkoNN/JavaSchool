@@ -14,26 +14,22 @@ public class TerminalServer {
         return balance;
     }
 
-    public void setBalance(int balance) {
-        this.balance = balance;
-    }
-
-    public void checkSumm(int summ) throws NumberIsNotMultipleException {
+    public void checkSum(int summ) throws NumberIsNotMultipleException {
         if (summ%100 != 0) {
             throw new NumberIsNotMultipleException("Введённое число не кратно 100");
         }
     }
 
     public void withdrawal(int cash) throws NotEnoughMoneyException {
-        if (cash > getBalance()) {
+        if (cash > this.balance) {
             throw new NotEnoughMoneyException("На Вашем счёте не достаточно средств");
         } else {
-            setBalance(getBalance() - cash);
+            this.balance = this.balance - cash;
             System.out.println("Выдано " + cash + " денег");
         }
     }
 
     public void refill(int fee) {
-        setBalance(getBalance() + fee);
+        this.balance = this.balance + fee;
     }
 }
