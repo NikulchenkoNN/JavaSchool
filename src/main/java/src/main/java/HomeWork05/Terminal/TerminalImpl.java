@@ -9,18 +9,21 @@ import java.io.IOException;
 public class TerminalImpl implements Terminal{
     private TerminalServer server;
     private PinValidator pinValidator;
-
-    public static void main(String[] args) throws IOException {
-
-    }
+    private BankAccount account;
 
     @Override
     public int checkBalance() {
-         return server.getBalance();
+        if (account.isLocked()) {
+            System.out.printf("Аккаунт заблокирован еще %s секунд \n", (System.nanoTime() - account.getLockTIme())/1000);
+        }
+        return server.getBalance();
     }
 
     @Override
     public void withdrawal(int cash) {
+        if (account.isLocked()) {
+            System.out.printf("Аккаунт заблокирован еще %s секунд \n", (System.nanoTime() - account.getLockTIme())/1000);
+        }
         try {
             server.checkSumm(cash);
             server.withdrawal(cash);
@@ -31,6 +34,9 @@ public class TerminalImpl implements Terminal{
 
     @Override
     public void refill(int fee) {
+        if (account.isLocked()) {
+            System.out.printf("Аккаунт заблокирован еще %s секунд \n", (System.nanoTime() - account.getLockTIme())/1000);
+        }
         try {
             server.checkSumm(fee);
         } catch (NumberIsNotMultipleException numberIsNotMultipleException) {
