@@ -2,14 +2,18 @@ package HomeWork05.Terminal;
 
 import HomeWork05.Exceptions.AccountIsLockedException;
 
-public class BankAccount {
-    private boolean lock;
-    private long lockTIme;
+import java.util.Arrays;
 
-    public BankAccount() {
+public class BankAccount {
+    private static boolean lock = false;
+    private static long lockTIme;
+    private static int[] pin;
+
+    public BankAccount(int[] pin) {
+        this.pin = pin;
     }
 
-    void Lock() {
+    static void Lock() {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -26,9 +30,13 @@ public class BankAccount {
         thread.start();
     }
 
-    public void checkLock() throws AccountIsLockedException {
+    public static boolean checkPin(int[] pinArray, int[] pinToCheck) {
+        return Arrays.equals(pin, pinToCheck);
+    }
+
+    public static void checkLock() throws AccountIsLockedException {
         if (lock){
-            throw new AccountIsLockedException("Аккаунт заблокирован еще %s секунд \n", (System.nanoTime() - this.lockTIme)/1000);
+            throw new AccountIsLockedException("Аккаунт заблокирован еще %s секунд \n", (System.nanoTime() - lockTIme)/1000);
         }
     }
 }

@@ -5,9 +5,15 @@ import HomeWork05.Exceptions.NotEnoughMoneyException;
 import HomeWork05.Exceptions.NumberIsNotMultipleException;
 
 public class TerminalImpl implements Terminal {
-    private TerminalServer server;
+    private final TerminalServer server;
     private PinValidator pinValidator;
-    private BankAccount account;
+    private final BankAccount account;
+
+    public TerminalImpl(TerminalServer server, PinValidator pinValidator, BankAccount account) {
+        this.server = server;
+        this.pinValidator = pinValidator;
+        this.account = account;
+    }
 
     @Override
     public int balance() {
@@ -35,7 +41,7 @@ public class TerminalImpl implements Terminal {
     }
 
     @Override
-    public void refill(int fee) {
+    public void refill(int fee) throws NumberIsNotMultipleException {
         try {
             account.checkLock();
         } catch (AccountIsLockedException e) {

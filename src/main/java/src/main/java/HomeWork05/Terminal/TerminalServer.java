@@ -20,16 +20,19 @@ public class TerminalServer {
         }
     }
 
-    public void withdrawal(int cash) throws NotEnoughMoneyException {
+    public void withdrawal(int cash) throws NotEnoughMoneyException, NumberIsNotMultipleException {
         if (cash > this.balance) {
             throw new NotEnoughMoneyException("На Вашем счёте не достаточно средств");
         } else {
+            checkSum(cash);
             this.balance = this.balance - cash;
             System.out.println("Выдано " + cash + " денег");
         }
     }
 
-    public void refill(int fee) {
+    public void refill(int fee) throws NumberIsNotMultipleException {
+        checkSum(fee);
         this.balance = this.balance + fee;
+        System.out.println("Пополнение на  " + fee + " денег");
     }
 }
