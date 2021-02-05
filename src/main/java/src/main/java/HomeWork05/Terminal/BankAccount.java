@@ -3,7 +3,7 @@ package HomeWork05.Terminal;
 import java.util.Date;
 
 public class BankAccount {
-    private static boolean isLock = true;
+    private volatile boolean isLock = true;
     private volatile long lockTIme;
     private static int[] pin;
     private int balance;
@@ -16,7 +16,6 @@ public class BankAccount {
 
     public void Lock() {
         lockTIme = new Date().getTime();
-        isLock = false;
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -25,7 +24,6 @@ public class BankAccount {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                isLock = true;
             }
         });
         thread.start();
@@ -33,7 +31,7 @@ public class BankAccount {
 
     public boolean checkLock() {
         if (isLock) {
-            System.out.printf("Аккаунт заблокирован еще %d сек", (new Date().getTime() - lockTIme));
+            System.out.printf("Аккаунт заблокирован еще %d сек \n", 10-(new Date().getTime() - lockTIme)/1000);
         }
         return isLock;
     }
@@ -51,7 +49,7 @@ public class BankAccount {
     }
 
     public void setLock(boolean lock) {
-        BankAccount.isLock = lock;
+        this.isLock = lock;
     }
 
     public long getLockTIme() {

@@ -42,8 +42,6 @@ public class TerminalServer {
                     System.out.println("Введено не корректное значение");
                 }
             }
-        } else {
-            System.out.printf("Аккаунт заблокирован еще %d", new Date().getTime() - account.getLockTIme());
         }
     }
 
@@ -55,8 +53,6 @@ public class TerminalServer {
             } else {
                 System.out.println("Введено не корректное значение");
             }
-        } else {
-            System.out.printf("Аккаунт заблокирован еще %d", new Date().getTime() - account.getLockTIme());
         }
     }
 

@@ -15,6 +15,11 @@ public class Main {
         TerminalImpl terminal = new TerminalImpl(server);
 
         terminal.access();
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         terminal.balance();
         try {
             Thread.sleep(5000);
@@ -22,6 +27,12 @@ public class Main {
             e.printStackTrace();
         }
         terminal.withdrawal(100);
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        terminal.access();
         terminal.refill(500);
         terminal.balance();
     }
