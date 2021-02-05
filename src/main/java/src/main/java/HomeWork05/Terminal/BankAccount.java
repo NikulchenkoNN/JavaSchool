@@ -1,42 +1,60 @@
 package HomeWork05.Terminal;
 
-import HomeWork05.Exceptions.AccountIsLockedException;
-
-import java.util.Arrays;
+import java.util.Date;
 
 public class BankAccount {
-    private static boolean lock = false;
-    private static long lockTIme;
+    private static boolean isLock = true;
+    private volatile long lockTIme;
     private static int[] pin;
+    private int balance;
 
-    public BankAccount(int[] pin) {
+
+    public BankAccount(int[] pin, int balance) {
         this.pin = pin;
+        this.balance = balance;
     }
 
-    static void Lock() {
+    public void Lock() {
+        lockTIme = new Date().getTime();
+        isLock = false;
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
-                lock = true;
-                lockTIme = System.nanoTime();
                 try {
                     Thread.sleep(10000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                lock = false;
+                isLock = true;
             }
         });
         thread.start();
     }
 
-    public static boolean checkPin(int[] pinArray, int[] pinToCheck) {
-        return Arrays.equals(pin, pinToCheck);
+    public boolean checkLock() {
+        if (isLock) {
+            System.out.printf("Аккаунт заблокирован еще %d сек", (new Date().getTime() - lockTIme));
+        }
+        return isLock;
     }
 
-    public static void checkLock() throws AccountIsLockedException {
-        if (lock){
-            throw new AccountIsLockedException("Аккаунт заблокирован еще %s секунд \n", (System.nanoTime() - lockTIme)/1000);
-        }
+    public  int[] getPin() {
+        return pin;
+    }
+
+    public int getBalance() {
+        return balance;
+    }
+
+    public void setBalance(int balance) {
+        this.balance = balance;
+    }
+
+    public void setLock(boolean lock) {
+        BankAccount.isLock = lock;
+    }
+
+    public long getLockTIme() {
+        return lockTIme;
     }
 }
