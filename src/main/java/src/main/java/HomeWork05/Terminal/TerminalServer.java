@@ -1,11 +1,10 @@
 package HomeWork05.Terminal;
 
+import HomeWork05.Exceptions.AccountIsLockedException;
 import HomeWork05.Exceptions.NotEnoughMoneyException;
-import HomeWork05.Exceptions.NumberIsNotMultipleException;
 
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.Date;
 
 public class TerminalServer {
     private final BankAccount account;
@@ -18,41 +17,50 @@ public class TerminalServer {
     }
 
     public void getBalance() {
-        if (!account.checkLock()) {
-            System.out.printf("На счете осталось %d денег \n", account.getBalance());
+        try {
+            if (!account.checkLock()) {
+                System.out.printf("На счете осталось %d денег \n", account.getBalance());
+            }
+        } catch (AccountIsLockedException e) {
+            e.getMessage();
         }
     }
 
-    public boolean checkSum(int summ) throws NumberIsNotMultipleException {
-        if (summ % 100 == 0) {
-            return true;
-        }
-        return false;
+    public boolean checkSum(int sum) {
+        return sum % 100 == 0;
     }
 
-    public void withdrawal(int cash) throws NotEnoughMoneyException, NumberIsNotMultipleException {
-        if (!account.checkLock()) {
-            if (cash > account.getBalance()) {
-                throw new NotEnoughMoneyException("На Вашем счёте не достаточно средств");
-            } else {
-                if (checkSum(cash)) {
-                    account.setBalance(account.getBalance() - cash);
-                    System.out.println("Выдано " + cash + " денег");
+    public void withdrawal(int cash) throws NotEnoughMoneyException{
+        try {
+            if (!account.checkLock()) {
+                if (cash > account.getBalance()) {
+                    throw new NotEnoughMoneyException("На Вашем счёте не достаточно средств");
+                } else {
+                    if (checkSum(cash)) {
+                        account.setBalance(account.getBalance() - cash);
+                        System.out.println("Выдано " + cash + " денег");
+                    } else {
+                        System.out.println("Введено не корректное значение");
+                    }
+                }
+            }
+        } catch (AccountIsLockedException e) {
+            e.getMessage();
+        }
+    }
+
+    public void refill(int fee) {
+        try {
+            if (!account.checkLock()) {
+                if (checkSum(fee)) {
+                    account.setBalance(account.getBalance() + fee);
+                    System.out.println("Пополнение на " + fee + " денег");
                 } else {
                     System.out.println("Введено не корректное значение");
                 }
             }
-        }
-    }
-
-    public void refill(int fee) throws NumberIsNotMultipleException {
-        if (!account.checkLock()) {
-            if (checkSum(fee)) {
-                account.setBalance(account.getBalance() + fee);
-                System.out.println("Пополнение на " + fee + " денег");
-            } else {
-                System.out.println("Введено не корректное значение");
-            }
+        } catch (AccountIsLockedException e) {
+            e.getMessage();
         }
     }
 

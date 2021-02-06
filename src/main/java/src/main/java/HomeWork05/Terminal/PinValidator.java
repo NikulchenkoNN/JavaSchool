@@ -1,6 +1,5 @@
 package HomeWork05.Terminal;
 
-import HomeWork05.Exceptions.AccountIsLockedException;
 
 import java.io.BufferedReader;
 import java.io.IOException;

@@ -1,5 +1,7 @@
 package HomeWork05.Terminal;
 
+import HomeWork05.Exceptions.AccountIsLockedException;
+
 import java.util.Date;
 
 public class BankAccount {
@@ -29,9 +31,9 @@ public class BankAccount {
         thread.start();
     }
 
-    public boolean checkLock() {
+    public boolean checkLock() throws AccountIsLockedException {
         if (isLock) {
-            System.out.printf("Аккаунт заблокирован еще %d сек \n", 10-(new Date().getTime() - lockTIme)/1000);
+            throw new AccountIsLockedException("Аккаунт заблокирован еще %d сек \n", 10-(new Date().getTime() - lockTIme)/1000);
         }
         return isLock;
     }

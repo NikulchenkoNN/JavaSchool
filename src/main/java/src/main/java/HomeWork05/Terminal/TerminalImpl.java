@@ -1,8 +1,6 @@
 package HomeWork05.Terminal;
 
-import HomeWork05.Exceptions.AccountIsLockedException;
 import HomeWork05.Exceptions.NotEnoughMoneyException;
-import HomeWork05.Exceptions.NumberIsNotMultipleException;
 
 import java.io.IOException;
 
@@ -20,12 +18,12 @@ public class TerminalImpl implements Terminal {
     }
 
     @Override
-    public void withdrawal(int cash) throws NumberIsNotMultipleException, NotEnoughMoneyException {
+    public void withdrawal(int cash) throws  NotEnoughMoneyException {
         server.withdrawal(cash);
     }
 
     @Override
-    public void refill(int fee) throws NumberIsNotMultipleException {
+    public void refill(int fee)  {
         server.refill(fee);
     }
 
