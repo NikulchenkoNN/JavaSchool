@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class PinValidator {
-    private int pinCount = 0;
+    private int pinCount;
     private final int[] pinArray = new int[4];
 
     public PinValidator() {
