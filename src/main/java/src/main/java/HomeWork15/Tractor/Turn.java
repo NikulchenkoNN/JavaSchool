@@ -1,4 +1,4 @@
-package HomeWork15;
+package HomeWork15.Tractor;
 
 public interface Turn {
     void turnFromNorthToEast();

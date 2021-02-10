@@ -1,4 +1,4 @@
-package HomeWork15;
+package HomeWork15.Tractor;
 
 public class MovingStrategy implements Move {
     int[] position = new int[]{0, 0};

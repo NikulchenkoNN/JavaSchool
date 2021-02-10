@@ -1,4 +1,4 @@
-package HomeWork15;
+package HomeWork15.Tractor;
 
 public class TractorInDitchException extends RuntimeException {
 }
