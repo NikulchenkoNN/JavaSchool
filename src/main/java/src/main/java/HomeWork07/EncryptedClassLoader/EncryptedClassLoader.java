@@ -19,23 +19,25 @@ public class EncryptedClassLoader extends ClassLoader {
         return super.findClass(name);
     }
 
-    @Override
-    public Class<?> loadClass(String name) throws ClassNotFoundException {
-
-        Class<?> c = findLoadedClass(name);
-        if (c == null) {
-            try {
-                try {
-                    if (parent != null) {
-                        c = parent.loadClass(name, false);
-                    } else {
-                        c = findBootstrapClassOrNull(name);
-                    }
-                } catch (ClassNotFoundException ignore) {
-                    if (c == null) c = findClass(name);
-                }
-                return c;
-
-            }
-
-        }
+//    @Override
+//    public Class<?> loadClass(String name) throws ClassNotFoundException {
+//
+//        Class<?> c = findLoadedClass(name);
+//        if (c == null) {
+//            try {
+//                try {
+//                    if (parent != null) {
+//                        c = parent.loadClass(name, false);
+//                    } else {
+//                        c = findBootstrapClassOrNull(name);
+//                    }
+//                } catch (ClassNotFoundException ignore) {
+//                    if (c == null) c = findClass(name);
+//                }
+//                return c;
+//
+//            }
+//
+//        }
+//    }
+}
