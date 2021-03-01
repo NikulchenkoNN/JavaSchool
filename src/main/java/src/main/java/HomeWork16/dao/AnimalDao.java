@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 public interface AnimalDao {
-    Animal createAnimal();
+    Animal createAnimal(String name, String type);
     Set<Animal> getAnimals();
     void createAnimals(List<Animal> animals);
     Animal findAnimal(String name, String type);

@@ -1,8 +1,6 @@
 package HomeWork16.Connection;
 
 
-
-
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
@@ -16,7 +14,7 @@ import java.sql.SQLException;
 public class DataSourceHelper {
 
     public static Connection connection() throws SQLException {
-        final Connection connection = DriverManager.getConnection("jdbc:h2:mem:test", "sa" , "");
+        final Connection connection = DriverManager.getConnection("jdbc:h2:mem:test", "sa", "");
         connection.setAutoCommit(true);
         return connection;
     }
@@ -25,14 +23,14 @@ public class DataSourceHelper {
         String sql;
         try {
             sql = FileUtils.readFileToString(new File(
-                    DataSourceHelper.class.getResource("/data.sql").getFile()),
+                    DataSourceHelper.class.getResource("/data").getFile()),
                     Charset.defaultCharset());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
-        try(PreparedStatement statement = DataSourceHelper.connection().prepareStatement(sql)) {
-statement.execute();
+        try (PreparedStatement statement = DataSourceHelper.connection().prepareStatement(sql)) {
+            statement.execute();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

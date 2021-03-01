@@ -40,7 +40,7 @@ public class Animal {
         this.type = type;
     }
 
-    public static Animal crate(String name, String type) {
+    public static Animal create(String name, String type) {
         Animal animal = new Animal();
         animal.setName(name);
         animal.setType(type);

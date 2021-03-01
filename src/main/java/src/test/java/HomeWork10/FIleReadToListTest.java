@@ -4,9 +4,7 @@ package HomeWork10;
 import HomeWork10.Part1.ThreadClass;
 import HomeWork10.Part2.MyThreadPoolImpl;
 import HomeWork10.Part2.MyThreadPoolImplScalable;
-import org.junit.Test;
-
-import java.io.IOException;
+import org.junit.jupiter.api.Test;
 
 public class FIleReadToListTest {
 

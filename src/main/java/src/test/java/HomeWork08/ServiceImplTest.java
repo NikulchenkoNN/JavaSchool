@@ -1,10 +1,8 @@
 package HomeWork08;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Proxy;
-
-import static org.junit.Assert.*;
 
 public class ServiceImplTest {
     @Test

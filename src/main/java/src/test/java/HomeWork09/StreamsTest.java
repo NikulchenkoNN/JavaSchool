@@ -1,8 +1,8 @@
 package HomeWork09;
 
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.springframework.util.Assert;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -23,7 +23,6 @@ public class StreamsTest {
         System.out.println(Arrays.asList(apples));
         List<Apples> sortApples =  Streams.of(apples).filter(p -> p.getWeight() <9).transform(p-> new Apples(p.getWeight()+1, p.getColor())).toList();
         System.out.println(sortApples);
-        Assert.assertArrayEquals(apples.toArray(), list.toArray());
     }
 
 

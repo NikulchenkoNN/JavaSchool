@@ -2,7 +2,7 @@ package HomeWork07;
 
 
 import HomeWork07.MyClassLoader.PluginManager;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.InvocationTargetException;
 
